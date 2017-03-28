@@ -22,6 +22,7 @@ if (array_key_exists('save',$_POST)){
 	}
 	#check file size...
 	if($_FILES['pic']['size'] > MAX_FILE_SIZE){
+		$error = [];
 		$errors['pic'] = "fiel sizeexceeds maximum. maximum: ". MAX_FILE_SIZE;
 	}
 	if(empty($errors)){
