@@ -14,7 +14,12 @@ $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_SILENT);
 }catch(PDOException $e){
 	echo $e->getMessage();
 }*/
+
+#max file size...
 define("MAX_FILE_SIZE","2097152");
+
+#allow extensions...
+$ext = ["image/jpg", "image/jpeg", "image/png"];
 
 if (array_key_exists('save',$_POST)){
 	if(empty($_FILES['pic']['name'])){
