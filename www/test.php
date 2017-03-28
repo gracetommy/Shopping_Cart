@@ -1,7 +1,12 @@
 <?php
 #test.php sandbox
 
-$conn = new PDO('mysql:host=localhost;dbname=testing; "root", "tommy"');
+define('DBNAME', 'bookstore');
+define('DBUSER', 'root');
+define('DBPASS', 'romantic');
+
+
+$conn = new PDO('mysql:host=localhost;dbname='.DBNAME, DBUSER, DBPASS);
 
 
 
