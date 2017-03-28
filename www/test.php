@@ -28,8 +28,15 @@ if (array_key_exists('save',$_POST)){
 	#check file size...
 	if($_FILES['pic']['size'] > MAX_FILE_SIZE){
 		$error = [];
-		$errors['pic'] = "fiel sizeexceeds maximum. maximum: ". MAX_FILE_SIZE;
+		$errors['pic'] = "fiel size exceeds maximum. maximum: ". MAX_FILE_SIZE;
 	}
+
+	#extension check...
+
+	if(!in_array($_FILES['pic']['type'], $ext)){
+		$errors[] = "Invalid file type";
+	}
+
 	if(empty($errors)){
 
 		echo "done";
