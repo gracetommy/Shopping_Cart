@@ -6,6 +6,27 @@
 
 	#include head.php
 include 'config/head.php';
+
+if (array_key_exists('register', $_POST)){
+
+	#cache errors
+	$errors = [];
+
+	#validate firstname
+	if(empty($_POST['fname'])){
+		$errors[] = "Please enter a first name";
+	}
+
+	if(empty($errors )){
+		//do db stuff
+	} else{
+		foreach ($errors as err){
+			echo $err;
+		}
+	}
+
+
+}
 ?>
 	
 	<div class="wrapper">
