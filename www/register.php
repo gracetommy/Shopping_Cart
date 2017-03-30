@@ -7,6 +7,9 @@
 	#include head.php
 	include 'config/head.php';
 
+	#include db conn file
+	include 'config/db.php';
+
 	if (array_key_exists('register', $_POST)){
 
 	#cache errors
