@@ -18,6 +18,4 @@ $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_SILENT);
 	echo $e->getMessage();
 }
 
-
-
 ?>

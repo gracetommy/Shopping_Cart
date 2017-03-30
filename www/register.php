@@ -1,4 +1,9 @@
+<?php
+	
+	#include head.php
+	include 'config/head.php';
 
+?>
 	<div class="wrapper">
 		<h1 id="register-label">Admin Register</h1>
 		<hr>
