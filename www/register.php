@@ -41,13 +41,28 @@
 		$errors[] = "password does not match, enter the correct password";
 	}
 
-	/*if(empty($errors )){
+	if(empty($errors )){
 		//do db stuff
-	} /*else{
-		foreach ($errors as $err){
-			echo $err;
-		}
-	*/
+	#eliminate unwanted spaces from values in the $_POST array
+		$clean = array_map('trim', $_POST);
+
+	#hash the password
+		$hash = password_hash($clean['password'], PASSWORD_BCRYPT);
+
+	#insert data
+		$stmt = $conn->prepare("INSERT INTO admin(first_name, last_name, email, hash) VALUES(:fn, :ln, :e, :h)");
+
+	#bind params...
+	$data = [
+		':fn' =>$clean['fname'],
+		':ln' =>$clean['lname'],
+		':e' =>$clean['email'],
+		':h' =>$clean['hash']
+		];
+
+	$stmt ->execute($data);
+	
+	}
 
 }
 
