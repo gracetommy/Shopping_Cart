@@ -1,5 +1,9 @@
 <?php
 	
+	#title
+	$page_title="Register";
+
+
 	#include head.php
 	include 'config/head.php';
 

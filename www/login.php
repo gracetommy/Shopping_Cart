@@ -1,4 +1,10 @@
 <?php
+
+#title
+	$page_title="Login";
+
+
+	#include head.php
 include 'config/head.php';
 ?>
 	
