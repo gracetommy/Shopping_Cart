@@ -2,7 +2,7 @@
 <?php
 #test.php sandbox
 
-define('DBNAME', 'testing');
+define('DBNAME', 'book_store');
 define('DBUSER', 'root');
 define('DBPASS', 'tommy');
 

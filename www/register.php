@@ -31,18 +31,15 @@
 	if(empty($_POST['password'])){
 		$errors['password'] = "Please enter password </br>";
 	}
-
-
-	if(empty($_POST['pword'])){
-		$errors['pword'] = "Please confirm your password";
-	}
+	
 
 	if(($_POST['pword']) != ($_POST['password'])){
-		$errors[] = "password does not match, enter the correct password";
+		$errors['pword'] = "password does not match, enter the correct password";
 	}
 
 	if(empty($errors )){
 		//do db stuff
+
 	#eliminate unwanted spaces from values in the $_POST array
 		$clean = array_map('trim', $_POST);
 
@@ -57,7 +54,7 @@
 		':fn' =>$clean['fname'],
 		':ln' =>$clean['lname'],
 		':e' =>$clean['email'],
-		':h' =>$clean['hash']
+		':h' =>$hash
 		];
 
 	$stmt ->execute($data);
@@ -99,7 +96,7 @@
 			</div>
 			<div>
 			<?php
-					if(isset($errors['password'])){ echo '<span class="err">'.$errors['password']. '</span>';}
+					if(isset($errors['hash'])){ echo '<span class="err">'.$errors['password']. '</span>';}
 				?>
 				<label>password:</label>
 				<input type="password" name="password" placeholder="password">
