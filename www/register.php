@@ -10,6 +10,9 @@
 	#include db conn file
 	include 'config/db.php';
 
+	#include function
+	include 'config/function.php';
+
 	if (array_key_exists('register', $_POST)){
 
 	#cache errors
@@ -28,6 +31,9 @@
 		$errors['email'] = "Please enter email </br>";
 	}
 
+	if(doesEmailExist($conn, $_POST['email'])){
+	$errors['email'] = "Email already exists";
+}
 	if(empty($_POST['password'])){
 		$errors['password'] = "Please enter password </br>";
 	}
@@ -43,22 +49,8 @@
 	#eliminate unwanted spaces from values in the $_POST array
 		$clean = array_map('trim', $_POST);
 
-	#hash the password
-		$hash = password_hash($clean['password'], PASSWORD_BCRYPT);
-
-	#insert data
-		$stmt = $conn->prepare("INSERT INTO admin(first_name, last_name, email, hash) VALUES(:fn, :ln, :e, :h)");
-
-	#bind params...
-	$data = [
-		':fn' =>$clean['fname'],
-		':ln' =>$clean['lname'],
-		':e' =>$clean['email'],
-		':h' =>$hash
-		];
-
-	$stmt ->execute($data);
-	
+		doAdminRegister($conn, $clean);
+		
 	}
 
 }
@@ -92,6 +84,9 @@
 				?>
 				<label>email:</label>
 				<input type="text" name="email" placeholder="email">
+
+
+				}
 				
 			</div>
 			<div>
